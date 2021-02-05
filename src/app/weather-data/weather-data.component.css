@@ -1,0 +1,96 @@
+/* search bar styling.................................................... */
+
+input {
+    width: 70%;
+    height: 5vh;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: rgb(212 208 218);
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.bg {
+    background: none;
+    border: none;
+}
+
+.bg h2 {
+    font-size: 50px;
+}
+
+
+/* street animation */
+
+.street {
+    position: relative;
+    animation-name: icon;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+.time {
+    border-radius: 13px;
+    background: #e0e0e0;
+    box-shadow: 23px 23px 45px #bebebe, -23px -23px 45px #ffffff;
+}
+
+@keyframes icon {
+    0% {
+        left: -100px;
+        top: 0px;
+    }
+    25% {
+        left: 100px;
+        top: 0px;
+    }
+    50% {
+        left: 100px;
+        top: 50px;
+    }
+    75% {
+        left: -100px;
+        top: 50px;
+    }
+    100% {
+        left: -100px;
+        top: 0px;
+    }
+}
+
+
+/* responsive  */
+
+@media (min-width: 576px) {
+    .weather-img {
+        height: 40vh;
+    }
+    .bg {
+        position: relative;
+        top: 25%;
+    }
+    .bg h2 {
+        font-size: 70px;
+    }
+    .bg h5 {
+        font-size: 30px;
+    }
+    .card .card-header1 h2 {
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .weather-img {
+        height: 60vh;
+    }
+    .bg h2 {
+        font-size: 40px;
+    }
+    .card .card-header1 h2 {
+        font-size: 13px;
+        border-radius: 10px;
+    }
+}

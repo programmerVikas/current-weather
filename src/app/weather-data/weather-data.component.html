@@ -1,0 +1,383 @@
+<div class="card">
+
+    <div *ngIf="(dateObj | date: 'a')=='AM' ; else elseBlock1 ">
+        <div *ngIf=" (dateObj | date: 'h') >= 5 &&  (dateObj | date: 'h') != 12; else elseBlock2">
+            <div *ngFor="let item of weatherData.weather">
+                <div [ngSwitch]="item.main">
+
+                    <!-- clear case-------------------------------------------------------------------- -->
+                    <div *ngSwitchCase="'Clear'">
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://image.freepik.com/free-photo/clear-blue-sky-panoramic-high-resolution-picture_117930-644.jpg');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-sun img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: yellow;text-shadow: 5px 2px 5px rgb(223, 255, 41);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- rain case------------------------------------------------------------------------------ -->
+                    <div *ngSwitchCase="'Rain'">
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://media1.tenor.com/images/735e68b36fb24b5cadda815230daad05/tenor.gif?itemid=13649339');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-cloud-sun-rain img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: yellow;text-shadow: 5px 2px 5px rgb(223, 255, 41);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- default case ------------------------------------------------------------ -->
+                    <div *ngSwitchDefault>
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://www.fox8live.com/resizer/9ueUhxU19NcQDO5krMFoTOxzN18=/1200x600/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/525NQWAC3NGO5PGEC3URYV5EK4.jpg');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-cloud img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: rgb(175, 175, 170);text-shadow: 5px 2px 5px rgb(255, 255, 255);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- if value will  be lesser than 5 than this block will be execute -->
+        <ng-template #elseBlock2>
+            <div *ngFor="let item of weatherData.weather">
+
+                <div [ngSwitch]="item.main">
+
+                    <!-- clear case-------------------------------------------------------------------- -->
+                    <div *ngSwitchCase="'Clear'">
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://burrow.hogwartsishere.com/media/profile_covers/295FEEDD-6758-44E3-BB64-E25F52BCA7BF_FMIcmwc.gif');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-moon img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: rgb(255, 255, 255);text-shadow: 5px 2px 5px rgb(166, 180, 88);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- rain case------------------------------------------------------------------------------ -->
+                    <div *ngSwitchCase="'Rain'">
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://cdn2.scratch.mit.edu/get_image/gallery/2930793_200x130.png');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-cloud-moon-rain img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: rgb(255, 255, 255);text-shadow: 5px 2px 5px rgb(218, 226, 175);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- default case ------------------------------------------------------------ -->
+                    <div *ngSwitchDefault>
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://jooinn.com/images/night-scene-54.png');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-cloud-moon img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: rgb(255, 255, 255);text-shadow: 5px 2px 5px rgb(255, 255, 255);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+
+    <!-- if pm will come then this block will be executed -->
+    <ng-template #elseBlock1>
+        <div *ngIf="(dateObj | date: 'h') >= 6 &&  (dateObj | date: 'h') != 12; else elseBlock3">
+            <div *ngFor="let item of weatherData.weather">
+
+                <div [ngSwitch]="item.main">
+
+                    <!-- clear case-------------------------------------------------------------------- -->
+                    <div *ngSwitchCase="'Clear'">
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://burrow.hogwartsishere.com/media/profile_covers/295FEEDD-6758-44E3-BB64-E25F52BCA7BF_FMIcmwc.gif');
+background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-moon img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: rgb(255, 255, 255);text-shadow: 5px 2px 5px rgb(166, 180, 88);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- rain case------------------------------------------------------------------------------ -->
+                    <div *ngSwitchCase="'Rain'">
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://cdn2.scratch.mit.edu/get_image/gallery/2930793_200x130.png');
+background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-cloud-moon-rain img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: rgb(255, 255, 255);text-shadow: 5px 2px 5px rgb(218, 226, 175);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- default case ------------------------------------------------------------ -->
+                    <div *ngSwitchDefault>
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://jooinn.com/images/night-scene-54.png');
+background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-cloud-moon img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: rgb(255, 255, 255);text-shadow: 5px 2px 5px rgb(255, 255, 255);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <ng-template #elseBlock3>
+            <div *ngFor="let item of weatherData.weather">
+                <div [ngSwitch]="item.main">
+
+                    <!-- clear case-------------------------------------------------------------------- -->
+                    <div *ngSwitchCase="'Clear'">
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://image.freepik.com/free-photo/clear-blue-sky-panoramic-high-resolution-picture_117930-644.jpg');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-sun img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: yellow;text-shadow: 5px 2px 5px rgb(223, 255, 41);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- rain case------------------------------------------------------------------------------ -->
+                    <div *ngSwitchCase="'Rain'">
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://media1.tenor.com/images/735e68b36fb24b5cadda815230daad05/tenor.gif?itemid=13649339');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-cloud-sun-rain img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: yellow;text-shadow: 5px 2px 5px rgb(223, 255, 41);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- default case ------------------------------------------------------------ -->
+                    <div *ngSwitchDefault>
+                        <div *ngFor="let items of weatherData.weather">
+                            <div class="row m-2 weather-img text-light" style="overflow: hidden; background-image: url('https://www.fox8live.com/resizer/9ueUhxU19NcQDO5krMFoTOxzN18=/1200x600/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/525NQWAC3NGO5PGEC3URYV5EK4.jpg');
+            background-size: 100% 100%; background-repeat: no-repeat;">
+                                <div class="col-sm-4 card text-center bg">
+                                    <i class="fas fa-cloud img-fluid mt-0 animate__animated animate__pulse animate__infinite animate__slow" aria-hidden="true" style="font-size:100px; color: rgb(175, 175, 170);text-shadow: 5px 2px 5px rgb(255, 255, 255);"></i>
+                                    <h6 class="mt-1">{{items.main}}</h6>
+                                    <p>{{items.description}}</p>
+                                </div>
+                                <div class="col-sm-4 card bg text-center">
+                                    <h2 class="card-title" style="font-family: 'Poller One', cursive;">
+                                        {{weatherData.main?.temp-273.15 | number}}&deg;c</h2>
+                                </div>
+                                <div class="col-sm-4 card bg text-center" style="overflow: hidden;">
+                                    <i class='fas fa-street-view street' style='text-shadow: 7px 28px 10px rgb(95, 86, 86); font-size:48px;color:rgb(255, 255, 255);float: left; '></i>
+                                    <h5 class="" style="float: right; font-family: 'Potta One', cursive;">
+                                        {{weatherData.name}}-<span class="text-warning">{{weatherData.sys?.country}}</span> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ng-template>
+
+    <!-- city not found alert,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <div class="alert alert-warning text-center" role="alert" *ngIf="wCityLoad">
+        {{wrongCity}}
+    </div>
+
+    <!-- loader will be load until data loads .................................................................... -->
+    <div class="text-center" *ngIf="load">
+        <!-- <img src="https://crossover.evoqondemand.com/Portals/0/Images/Map/xopreload.gif" alt=""> -->
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <!-- input is started,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <div class="">
+        <input class="" type="text" placeholder="Check your City..." #myCity>
+        <button (click)="myData(myCity.value)" class="btn" style="border-radius: 9px;
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+        box-shadow:  35px 35px 70px #d9d9d9,
+                     -35px -35px 70px #ffffff; float: right;"><strong>check</strong>&nbsp;<i class="fa fa-search"
+                aria-hidden="true"></i></button>
+    </div>
+
+    <!-- weather details block -->
+    <div class="card m-2">
+        <div class="card-header1 m-2">
+            <h2 class="" style="float: left; font-family: 'Frijole', cursive;">{{ dateObj | date:'EEEE' }}:</h2>
+            <h2 class="" style="float: left; font-family: 'Josefin Slab', serif;"><b> {{ dateObj | date:'MMMM d, y'
+                    }}</b></h2>
+            <h2 style="float: right; font-family: 'Keania One', cursive; " class="time p-1">{{dateObj | date: 'hh:mm:ss a'}}
+            </h2>
+        </div>
+        <div class="card table-responsive bg-secondary">
+            <table class="table text-light">
+                <thead>
+                    <tr class="text-center">
+                        <th>Visibility</th>
+                        <th>Temp_min</th>
+                        <th>Temp_max</th>
+                        <th>Pressure</th>
+                        <th>Humidity</th>
+                        <th>Wind-Speed</th>
+                        <th>Sea_level</th>
+                        <th>Grnd_level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+
+                        <td>{{weatherData.visibility}} meter</td>
+                        <td>{{weatherData.main?.temp_min-273.15 | number}}&deg;c</td>
+                        <td>{{weatherData.main?.temp_max-273.15 | number}}&deg;c</td>
+                        <td>{{weatherData.main?.pressure}} hPa</td>
+                        <td>{{weatherData.main?.humidity}}%</td>
+                        <td>{{weatherData.wind?.speed*3.6 | number}} km/h</td>
+                        <td>{{weatherData.main?.sea_level}} hPa</td>
+                        <td>{{weatherData.main?.grnd_level}} hPa</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
